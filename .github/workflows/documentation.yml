@@ -1,0 +1,30 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - feature/testDocumentation
+
+concurrency:
+  group: documentation
+  cancel-in-progress: true
+
+jobs:
+  phpdoc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 8
+          distribution: 'corretto'
+        run: |
+          rm -rf docs
+          mkdir docs
+          mvn javadoc:javadoc
+          git config user.name "GitHub Actions"
+          git config user.email ""
+          git add docs/
+          git commit -m "Update phpdoc" || echo "No changes to commit"
+          git push
