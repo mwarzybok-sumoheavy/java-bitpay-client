@@ -19,10 +19,13 @@ jobs:
         with:
           java-version: 8
           distribution: 'corretto'
+      - name: generate docs
         run: |
           rm -rf docs
           mkdir docs
           mvn javadoc:javadoc
+          mv target/site/apidocs/ docs/
+      - name: git commit
           git config user.name "GitHub Actions"
           git config user.email ""
           git add docs/
