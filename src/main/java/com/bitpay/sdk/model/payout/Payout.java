@@ -58,7 +58,6 @@ public class Payout {
     private Integer code;
     private List<PayoutTransaction> transactions = Collections.emptyList();
     public boolean ignoreEmails = false;
-    private String toDelete;
 
     /**
      * Constructor, create an empty Payout object.
@@ -96,22 +95,6 @@ public class Payout {
 
     // API fields
     //
-
-    /**
-     * Some comment.
-     * @return string
-     */
-    public String getToDelete() {
-        return toDelete;
-    }
-
-    /**
-     * Another comment.
-     * @param toDelete string
-     */
-    public void setToDelete(String toDelete) {
-        this.toDelete = toDelete;
-    }
 
     /**
      * Gets resource token.
